@@ -10,8 +10,8 @@ import com.assignment.one.Customer.Customer;
 @Repository
 public interface CustomerDao extends CrudRepository<Customer, Integer>{
 
-List<Customer> findByname(String name);
-List<Customer> findByMobile(long mobile);
-List<Customer> findByCity(String city);
-List<Customer> findByEmail(String email);
+//List<Customer> findByname(String name);
+//List<Customer> findByMobile(long mobile);
+//List<Customer> findByCity(String city);
+//List<Customer> findByEmail(String email);
 }

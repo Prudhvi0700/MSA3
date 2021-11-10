@@ -49,8 +49,6 @@ public class CustomerController {
 		
 	}
 	
-	
-	
 	@PostMapping("/join")
 	public ResponseEntity<String> addCustomer(@RequestBody Customer c) {
 		customerservice.addCustomer(c);
@@ -58,40 +56,6 @@ public class CustomerController {
 		return ResponseEntity.ok("Successfully Added\n"+customers);
 	}
 	
-	@PutMapping("/change")
-	public ResponseEntity<String> updateCustomer(Customer c) {
-		if(!customerdao.existsById(c.getId()))throw new DataIntegrityViolationException("Customer not found to update");
-		customerservice.updateCustomer(c);
-		List<Customer> customers=customerservice.getCustomer();
-		return ResponseEntity.ok("Successfully Updated\n"+customers);
-		
-	}
-	
-	@DeleteMapping("/{id}")
-	public ResponseEntity<String> removeCustomer(@PathVariable int id) {
-		 if(!customerdao.existsById(id))throw new EmptyResultDataAccessException("Customer not found", id);
-		customerdao.deleteById(id);
-		List<Customer> customers=customerservice.getCustomer();
-		return ResponseEntity.ok("Successfully Deleted\n"+customers);
-	}
-	
-	
-	
-	@GetMapping("/name/{name}")
-	public ResponseEntity<List<Customer>> byname(@PathVariable String name) {
-	return new ResponseEntity<List<Customer>>(customerdao.findByname(name), HttpStatus.OK);
-	}
-	@GetMapping("/mobile/{mobile}")
-	public ResponseEntity<List<Customer>> bymobile(@PathVariable long moblie) {
-		return new ResponseEntity<List<Customer>>(customerdao.findByMobile(moblie), HttpStatus.OK);
-}
-	@GetMapping("/city/{city}")
-	public ResponseEntity<List<Customer>> bycity(@PathVariable String city) {
-		return new ResponseEntity<List<Customer>>(customerdao.findByCity(city), HttpStatus.OK);
-	}
-	@GetMapping("/email/{email}")
-	public ResponseEntity<List<Customer>> byemail(@PathVariable String email) {
-		return new ResponseEntity<List<Customer>>(customerdao.findByEmail(email), HttpStatus.OK);
-	}
+
 
 }

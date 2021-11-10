@@ -17,9 +17,6 @@ public class CustomerService {
 	@Autowired
 	private CustomerDao customerdao;
 	
-	
-	
-	
 	public List<Customer> getCustomer(){
 		return (List<Customer>) customerdao.findAll();
 		
@@ -30,19 +27,13 @@ public class CustomerService {
 		
 	}
 	
-	public void updateCustomer(Customer customer) {
-		customerdao.save(customer);
-	}
-	
-	public void deleteCustomer(int id) {
-		customerdao.deleteById(id);
-	}
-
 	public Optional<Customer> getCustomerbyId(int id) {
 		return customerdao.findById(id);
 		
 		
 	}
+	
+
 
 	
 	
